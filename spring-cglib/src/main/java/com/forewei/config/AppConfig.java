@@ -1,5 +1,6 @@
 package com.forewei.config;
 
+import com.forewei.anonotation.ForeweiScan;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -17,7 +18,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ComponentScan("com.forewei")
-@MapperScan("com.forewei.dao")
+@ForeweiScan
 public class AppConfig {
 
 	@Bean
