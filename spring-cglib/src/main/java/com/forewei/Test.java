@@ -20,6 +20,8 @@ public class Test {
 				= new AnnotationConfigApplicationContext(AppConfig.class);
 //		AppUserService dao = annotationConfigApplicationContext.getBean(AppUserService.class);
 		AppUserDao dao1 = (AppUserDao) annotationConfigApplicationContext.getBean("appUserDao");
+		AppUserDao dao2 = (AppUserDao) annotationConfigApplicationContext.getBean(AppUserDao.class);
+		dao2.findList();
 		dao1.findList();
 //		// java动态代理
 //		Class[] clazz = {AppUserDao.class};

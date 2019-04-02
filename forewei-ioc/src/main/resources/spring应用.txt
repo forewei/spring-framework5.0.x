@@ -1,0 +1,25 @@
+1.spring编程风格的三种方式  annotation(借助于javaconfig) javaconfig xml
+
+
+2.注入的两种方法  set注入   constructor注入 接口注入（spring新版本不推荐了）
+    spring注入详细配置（字符串、数组等）参考文档：
+    https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-properties-detailed
+
+3.自动装配的方法 no(不需要装备) byType byName constructor
+   自动装配的方式参考文档：
+   https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-autowire
+
+4.spring 懒加载
+     文档参考：
+     https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-scopes
+
+5.springbean的作用域
+   文档参考：
+   https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-scopes
+
+   意思是在Singleton 当中引用了一个Prototype的bean的时候引发的问题
+   官网引导我们参考https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-method-injection
+
+6.spring声明周期和回调
+   参考文档：
+   https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-lifecycle

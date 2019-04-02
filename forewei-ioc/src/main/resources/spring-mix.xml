@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="testService2" class="com.forewei.service.TestService2">
+	<constructor-arg value="mix123"/>
+	<property ref="testService1 " name="testService1"></property>
+</bean>
+	<bean id= "testService1 " class="com.forewei.service.TestService1">
+		<constructor-arg value="31231"/>
+	</bean>
+</beans>
