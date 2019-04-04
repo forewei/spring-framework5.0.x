@@ -51,22 +51,45 @@ import org.springframework.util.Assert;
  * @see org.springframework.context.support.GenericXmlApplicationContext
  */
 public class AnnotationConfigApplicationContext extends GenericApplicationContext implements AnnotationConfigRegistry {
-
+	/**
+	 * 这个类顾名思义是一个reader，一个读取器
+	 * 读取什么呢？还是顾名思义AnnotatedBeanDefinition意思是读取一个被加了注解的bean
+	 * 这个类在构造方法中实例化的
+	 */
 	private final AnnotatedBeanDefinitionReader reader;
 
+	/**
+	 * 同意顾名思义，这是一个扫描器，扫描所有加了注解的bean
+	 *  同样是在构造方法中被实例化的
+	 */
 	private final ClassPathBeanDefinitionScanner scanner;
 
 
 	/**
+	 * 初始化一个bean的读取和扫描器
+	 * 何谓读取器和扫描器参考上面的属性注释
+	 * 默认构造函数，如果直接调用这个默认构造方法，需要在稍后通过调用其register()
+	 * 去注册配置类（javaconfig），并调用refresh()方法刷新容器，
+	 * 触发容器对注解Bean的载入、解析和注册过程
 	 * Create a new AnnotationConfigApplicationContext that needs to be populated
 	 * through {@link #register} calls and then manually {@linkplain #refresh refreshed}.
 	 */
 	public AnnotationConfigApplicationContext() {
+		/**
+		 * 父类的构造方法
+		 * 创建一个读取注解的Bean定义读取器
+		 * 什么是bean定义？BeanDefinition
+		 */
 		this.reader = new AnnotatedBeanDefinitionReader(this);
+		//可以用来扫描包或者类，继而转换成bd
+		//但是实际上我们扫描包工作不是scanner这个对象来完成的
+		//是spring自己new的一个ClassPathBeanDefinitionScanner
+		//这里的scanner仅仅是为了程序员能够在外部调用AnnotationConfigApplicationContext对象的scan方法
 		this.scanner = new ClassPathBeanDefinitionScanner(this);
 	}
 
 	/**
+	 * 一般不会手动实现bean工厂 ,除非你觉得springBean工厂不满足你的需求。
 	 * Create a new AnnotationConfigApplicationContext with the given DefaultListableBeanFactory.
 	 * @param beanFactory the DefaultListableBeanFactory instance to use for this context
 	 */
@@ -77,12 +100,18 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	}
 
 	/**
+	 * 这个构造方法需要传入一个被javaconfig注解了的配置类
+	 * 然后会把这个被注解了javaconfig的类通过注解读取器读取后继而解析
+	 *
 	 * Create a new AnnotationConfigApplicationContext, deriving bean definitions
 	 * from the given annotated classes and automatically refreshing the context.
 	 * @param annotatedClasses one or more annotated classes,
 	 * e.g. {@link Configuration @Configuration} classes
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
+		//annotatedClasses  appconfig.class
+		//这里由于他有父类，故而会先调用父类的构造方法，然后才会调用自己的构造方法
+		//在自己构造方法中初始一个读取器和扫描器
 		this();
 		register(annotatedClasses);
 		refresh();
@@ -144,6 +173,13 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	//---------------------------------------------------------------------
 
 	/**
+	 * 注册单个bean给容器
+	 * 比如有新加的类可以用这个方法
+	 * 但是注册注册之后需要手动调用refresh方法去触发容器解析注解
+	 *
+	 * 有两个意思
+	 * 他可以注册一个配置类
+	 * 他还可以单独注册一个bean
 	 * Register one or more annotated classes to be processed.
 	 * <p>Note that {@link #refresh()} must be called in order for the context
 	 * to fully process the new classes.
@@ -158,6 +194,8 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	}
 
 	/**
+	 * spring提供外部调用scan方法进行扫描
+	 *
 	 * Perform a scan within the specified base packages.
 	 * <p>Note that {@link #refresh()} must be called in order for the context
 	 * to fully process the new classes.

@@ -591,11 +591,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		if (logger.isInfoEnabled()) {
 			logger.info("Refreshing " + this);
 		}
-
+		// 实际什么也没干？
 		// Initialize any placeholder property sources in the context environment.
 		initPropertySources();
 
-		// Validate that all properties marked as required are resolvable:
+		// Validate that all pro perties marked as required are resolvable:
 		// see ConfigurablePropertyResolver#setRequiredProperties
 		getEnvironment().validateRequiredProperties();
 
