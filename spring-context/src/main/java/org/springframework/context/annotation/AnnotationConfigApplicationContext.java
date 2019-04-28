@@ -76,9 +76,19 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 */
 	public AnnotationConfigApplicationContext() {
 		/**
-		 * 父类的构造方法
+		 * 先调用父类的构造方法进行bean工厂的初始化
+		 *
 		 * 创建一个读取注解的Bean定义读取器
 		 * 什么是bean定义？BeanDefinition
+		 *  这里会注册6个RootBeanDefinition（spring内部定义的后置处理器）
+		 *  <org.springframework.context.annotation.internalConfigurationAnnotationProcessor>
+		 *  <org.springframework.context.annotation.internalAutowiredAnnotationProcessor>
+		 *  <org.springframework.context.annotation.internalRequiredAnnotationProcessor>
+		 *  <org.springframework.context.annotation.internalCommonAnnotationProcessor>
+		 *  <org.springframework.context.event.internalEventListenerProcessor>
+		 *  <org.springframework.context.event.internalEventListenerFactory>
+		 *
+		 *
 		 */
 		this.reader = new AnnotatedBeanDefinitionReader(this);
 		//可以用来扫描包或者类，继而转换成bd
@@ -112,6 +122,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 		//annotatedClasses  appconfig.class
 		//这里由于他有父类，故而会先调用父类的构造方法，然后才会调用自己的构造方法
 		//在自己构造方法中初始一个读取器和扫描器
+		//
 		this();
 		register(annotatedClasses);
 		refresh();

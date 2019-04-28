@@ -1,29 +1,25 @@
 package com.forewei.service;
 
 import com.forewei.dao.TestDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author forewei
  * @date 2019-4-2 17:10
  */
-public class TestService2 implements TestDao{
+@Service
+public class TestService2 {
 
-	private TestService1 testService1;
+	@Autowired
+	private List<TestDao> testDaos = new ArrayList<>();
 
-	public TestService2(String s) {
+	public void test(){
+		testDaos.forEach(f->{
+			System.out.println(f);
+		});
 	}
-
-	@Override
-	public void query() {
-		testService1.query();
-	}
-
-	public void setTestService1(TestService1 testService1) {
-		this.testService1 = testService1;
-	}
-
-	public TestService1 getTestService1() {
-		return testService1;
-	}
-
 }

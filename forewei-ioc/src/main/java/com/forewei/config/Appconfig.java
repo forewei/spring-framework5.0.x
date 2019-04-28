@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  */
 @Configuration
 @ComponentScan("com.forewei")
-@ImportResource("classpath:\\spring-mix.xml")
+//@ImportResource("classpath:\\spring-mix.xml")
 public class Appconfig {
 
 }

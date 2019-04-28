@@ -18,11 +18,21 @@ public class Test {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext annotationConfigApplicationContext
 				= new AnnotationConfigApplicationContext(AppConfig.class);
+
+//				AnnotationConfigApplicationContext annotationConfigApplicationContext
+//				= new AnnotationConfigApplicationContext("com.forewei.config");
+//		System.out.println(annotationConfigApplicationContext.getBean(AppUserDao.class));
+//		System.out.println(annotationConfigApplicationContext.
+//				getBeansOfType(AppUserDao.class));
+//		AppUserService bean = annotationConfigApplicationContext.getBean(AppUserService.class);
+//		bean.getAppUserDaoList().forEach(f->{
+//			f.findList();
+//		});
 //		AppUserService dao = annotationConfigApplicationContext.getBean(AppUserService.class);
-		AppUserDao dao1 = (AppUserDao) annotationConfigApplicationContext.getBean("appUserDao");
-		AppUserDao dao2 = (AppUserDao) annotationConfigApplicationContext.getBean(AppUserDao.class);
-		dao2.findList();
-		dao1.findList();
+//		AppUserDao dao1 = (AppUserDao) annotationConfigApplicationContext.getBean("appUserDao");
+//		AppUserDao dao2 = (AppUserDao) annotationConfigApplicationContext.getBean(AppUserDao.class);
+//		dao2.findList();
+//		dao1.findList();
 //		// java动态代理
 //		Class[] clazz = {AppUserDao.class};
 //		AppUserDao dao2 = (AppUserDao) Proxy.newProxyInstance(Test.class.getClassLoader(), clazz, new ForeweiInvocationHandler());

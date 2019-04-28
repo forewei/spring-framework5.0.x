@@ -12,6 +12,9 @@ import javax.annotation.PostConstruct;
 @Component
 public class TestService implements TestDao {
 
+	public TestService(){
+		System.out.println("TestService");
+	}
 
 	@Override
 	public void query() {

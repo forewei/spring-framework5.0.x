@@ -2,6 +2,7 @@ package com.forewei.test;
 
 import com.forewei.config.Appconfig;
 import com.forewei.dao.TestDao;
+import com.forewei.service.TestService1;
 import com.forewei.service.TestService2;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -17,7 +18,9 @@ public class Test {
 		AnnotationConfigApplicationContext annotationConfigApplicationContext
 				= new AnnotationConfigApplicationContext(Appconfig.class);
 		TestService2 testService2 = (TestService2) annotationConfigApplicationContext.getBean("testService2");
-		testService2.query();
+		testService2.test();
+//		TestService1 bean = annotationConfigApplicationContext.getBean(TestService1.class);
+
 //		TestDao bean = annotationConfigApplicationContext.getBean(TestDao.class);
 //		bean.query();
 //

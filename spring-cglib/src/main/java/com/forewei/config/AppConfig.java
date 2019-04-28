@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ComponentScan("com.forewei")
-@ForeweiScan
+//@ForeweiScan
 public class AppConfig {
 
 	@Bean
