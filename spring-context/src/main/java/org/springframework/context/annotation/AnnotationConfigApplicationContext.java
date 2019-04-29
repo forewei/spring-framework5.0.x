@@ -124,6 +124,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 		//在自己构造方法中初始一个读取器和扫描器
 		//
 		this();
+		// 注册自己传给spring的类(例如@Configuration的配置类)
 		register(annotatedClasses);
 		refresh();
 	}
