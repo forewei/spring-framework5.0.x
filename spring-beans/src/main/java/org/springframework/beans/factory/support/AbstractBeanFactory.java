@@ -284,6 +284,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			}
 
 			if (!typeCheckOnly) {
+				// 这里判断该bena是否是正在被创建 如果不是放到正在被创建的alreadyCreated集合里
 				markBeanAsCreated(beanName);
 			}
 
