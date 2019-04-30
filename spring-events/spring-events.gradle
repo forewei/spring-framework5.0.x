@@ -1,0 +1,9 @@
+description = "Forewei envents"
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':spring-context')
+}
