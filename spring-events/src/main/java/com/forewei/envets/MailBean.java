@@ -11,9 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MailBean {
 
+
 	@Autowired
 	ApplicationContext applicationContext;
-	public void send(){
-		applicationContext.publishEvent(new SpringMailEvent(applicationContext));
+
+	public void send() {
+		String content ="hello event";
+		applicationContext.publishEvent(new SpringMailEvent(content));
 	}
 }

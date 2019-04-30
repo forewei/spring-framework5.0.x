@@ -20,6 +20,6 @@ public class ForeweiEventsListener implements ApplicationListener<SpringMailEven
 
 	@Override
 	public void onApplicationEvent(SpringMailEvent event) {
-		System.out.println("mail send");
+		System.out.println(event.getSource());
 	}
 }

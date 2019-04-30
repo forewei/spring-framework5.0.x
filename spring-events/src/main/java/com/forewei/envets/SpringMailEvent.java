@@ -10,16 +10,6 @@ import org.springframework.stereotype.Service;
 
 public class SpringMailEvent extends ApplicationEvent{
 
-	private String content;
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
 	/**
 	 * Create a new ApplicationEvent.
 	 *
